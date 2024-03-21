@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alarm Clock</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+
+  <div class="container">
+    <h1>Alarm Clock</h1>
+    <div style="font-weight: bolder;">
+      <h3 style="display: inline;">Current Time:</h3> <span id="clock"></span>
+    </div>
+    <div class="alarmItems">
+      Set Alarm Time:
+      <select id="hours"></select>
+      :
+      <select id="minutes"></select>
+      :
+      <select id="seconds"></select>
+      <select id="ampm">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div  >
+    <button id="setBtn" onclick="addAlarm()">Set Alarm</button>
+    <ul id="alarm-list"></ul>
+  </div>
+
+  <script>
+    // Populate dropdowns for hours, minutes, and seconds
+    function populateDropdowns() {
+      var hoursDropdown = document.getElementById('hours');
+      var minutesDropdown = document.getElementById('minutes');
+      var secondsDropdown = document.getElementById('seconds');
+
+      for (var i = 1; i <= 12; i++) {
+        var option = document.createElement('option');
+        option.text = (i < 10) ? '0' + i : i;
+        option.value = i;
+        hoursDropdown.add(option);
+      }
+
+      for (var i = 0; i < 60; i++) {
+        var option = document.createElement('option');
+        option.text = (i < 10) ? '0' + i : i;
+        option.value = i;
+        minutesDropdown.add(option);
+        secondsDropdown.add(option.cloneNode(true));
+      }
+    }
+
+    populateDropdowns();
+
+    // Function to add alarm
+    function populateDropdowns() {
+      var hoursDropdown = document.getElementById('hours');
+      var minutesDropdown = document.getElementById('minutes');
+      var secondsDropdown = document.getElementById('seconds');
+
+      for (var i = 1; i <= 12; i++) {
+        var option = document.createElement('option');
+        option.text = (i < 10) ? '0' + i : i;
+        option.value = i;
+        hoursDropdown.add(option);
+      }
+
+      for (var i = 0; i < 60; i++) {
+        var option = document.createElement('option');
+        option.text = (i < 10) ? '0' + i : i;
+        option.value = i;
+        minutesDropdown.add(option);
+        secondsDropdown.add(option.cloneNode(true));
+      }
+    }
+
+    populateDropdowns();
+
+    // Function to add alarm
+    function addAlarm() {
+      var hours = document.getElementById('hours').value;
+      var minutes = document.getElementById('minutes').value;
+      var seconds = document.getElementById('seconds').value;
+      var ampm = document.getElementById('ampm').value;
+
+      // Convert hours to 24-hour format if it's PM
+      if (ampm === 'PM' && hours !== '12') {
+        hours = parseInt(hours, 10) + 12;
+      }
+
+      var alarmTime = hours + ":" + minutes + ":" + seconds;
+
+      var alarmList = document.getElementById('alarm-list');
+      var li = document.createElement('li');
+      li.className = 'alarm-item';
+      var displayHours = (hours % 12) || 12; // Handle midnight (0 hours)
+      li.innerHTML = displayHours + ":" + minutes + ":" + seconds + ' ' + ampm + ' <button class="delete-btn" onclick="deleteAlarm(this)">Delete</button>';
+      alarmList.appendChild(li);
+
+      setAlarm(alarmTime);
+    }
+
+    // Function to set the alarm
+    function setAlarm(alarmTime) {
+      var current = new Date();
+      var timeArray = alarmTime.split(":");
+      var alarm = new Date();
+      alarm.setHours(timeArray[0], timeArray[1], timeArray[2], 0);
+      var timeToAlarm = alarm - current;
+      if (timeToAlarm < 0) {
+        timeToAlarm += 24 * 60 * 60 * 1000;
+      }
+      setTimeout(function() {
+        alert("Alarm!");
+      }, timeToAlarm);
+    }
+
+    // Function to delete an alarm
+    function deleteAlarm(btn) {
+      var listItem = btn.parentNode;
+      listItem.parentNode.removeChild(listItem);
+    }
+
+    // Update clock
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // Handle midnight (0 hours)
+      document.getElementById('clock').innerText = (hours < 10 ? '0' : '') + hours + ':' +
+        (minutes < 10 ? '0' : '') + minutes + ':' +
+        (seconds < 10 ? '0' : '') + seconds + ' ' + ampm;
+    }
+
+    // Update clock every second
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>

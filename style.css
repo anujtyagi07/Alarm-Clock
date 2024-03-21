@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container{
+  border: solid 2px black;
+  border-radius: 5px;
+  width: 50vw;
+  margin-left: 22rem;
+  background-color: lavender;
+}
+#alarm-list {
+  list-style-type: none;
+  padding: 0;
+}
+.alarm-item {
+  margin-bottom: 10px;
+}
+.delete-btn {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clock{
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.alarmItems{
+  margin-top: 3rem;
+}
+
+#setBtn {
+
+  margin-top: 1rem;
+  background-color: rgba(0, 174, 255, 0.983);
+  color: white;
+  border-color: white;
+  border-radius: 10px;
+}
