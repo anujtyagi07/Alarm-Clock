@@ -16,6 +16,6 @@ Required Features:
    - When an alarm goes off, utilize JavaScript's alert function to notify the user in the browser.
 
 
-Demo Video : chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/f4437b3c-d06d-431e-y2a4-f4d0a6a3c026
+Demo Video : https://drive.google.com/file/d/1fP5i2J0t2UMVFZ2slNPRYv7q4exkJOx-/view?usp=drive_link
 
 Hosting Link : https://anujtyagi07.github.io/Alarm-Clock/
