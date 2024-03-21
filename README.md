@@ -14,3 +14,8 @@ Required Features:
 3. Alarms List:
    - Display a list of all alarms set by the user.
    - When an alarm goes off, utilize JavaScript's alert function to notify the user in the browser.
+
+
+Demo Video : chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/f4437b3c-d06d-431e-y2a4-f4d0a6a3c026
+
+Hosting Link : https://anujtyagi07.github.io/Alarm-Clock/
